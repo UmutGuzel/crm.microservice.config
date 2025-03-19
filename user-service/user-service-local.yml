@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/user-service"
+    username: postgres
+    password: test
+  kafka:
+    bootstrap-servers: localhost:9092
+  
+logging:
+  level:
+    com.gygy.userservice.core.pipeline: DEBUG
+    com.gygy: INFO
+    root: WARN
