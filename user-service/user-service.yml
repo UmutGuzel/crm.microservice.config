@@ -15,12 +15,18 @@ spring:
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: org.apache.kafka.common.serialization.StringSerializer
             properties:
-            spring.json.trusted.packages: "*"
+                spring:
+                    json:
+                        trusted:
+                            packages: "*"
         producer:
             key-serializer: org.apache.kafka.common.serialization.StringSerializer
             value-serializer: org.apache.kafka.common.serialization.StringSerializer
             properties:
-            spring.json.trusted.packages: "*"
+                spring:
+                    json:
+                        trusted:
+                            packages: "*"
 
 server:
   port: 9010
