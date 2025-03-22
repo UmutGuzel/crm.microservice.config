@@ -1,5 +1,79 @@
 spring:
   application:
    name: gateway-server
+   cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service-auth
+          uri: lb://user-service
+          predicates:
+            - Path=/api/auth/**
+        - id: user-service-role
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/role/**
+        - id: user-service-permission
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/permission/**
+        - id: plan-service-plans
+          uri: lb://plan-service
+          predicates:
+            - Path=/api/plans/**
+        - id: plan-service-categories
+          uri: lb://plan-service
+          predicates:
+            - Path=/api/plan-categories/**
+        - id: plan-service-contracts
+          uri: lb://plan-service
+          predicates:
+            - Path=/api/plan-contracts/**
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/payments/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notifications/**
+        - id: customer-support-service
+          uri: lb://customer-support-service
+          predicates:
+            - Path=/api/support/**
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/api/v1/customers/**
+        - id: contract-service-contracts
+          uri: lb://contract-service
+          predicates:
+            - Path=/api/v1/contracts/**
+        - id: contract-service-billing-plans
+          uri: lb://contract-service
+          predicates:
+            - Path=/api/v1/billing-plans/**
+        - id: contract-service-discounts
+          uri: lb://contract-service
+          predicates:
+            - Path=/api/v1/discounts/**
+        - id: contract-service-commitments
+          uri: lb://contract-service
+          predicates:
+            - Path=/api/v1/commitments/**
+        - id: contract-service-details
+          uri: lb://contract-service
+          predicates:
+            - Path=/api/v1/contract-details/**
+        - id: analytics-service
+          uri: lb://analytics-service
+          predicates:
+            - Path=/api/analytics/**
+      httpclient:
+        connect-timeout: 5000
+        response-timeout: 10000
 server:
   port: 8080
