@@ -3,3 +3,12 @@ spring:
   url: "jdbc:postgresql://localhost:5432/contract_service"
   username: postgres
   password: test
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: true

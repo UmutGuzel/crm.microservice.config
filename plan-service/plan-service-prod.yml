@@ -1,0 +1,8 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8888/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: true

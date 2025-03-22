@@ -17,3 +17,12 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    preferIpAddress: true
