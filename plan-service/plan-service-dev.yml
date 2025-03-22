@@ -4,3 +4,9 @@ eureka:
       defaultZone: http://discovery-server:8888/eureka/
     register-with-eureka: true
     fetch-registry: true
+spring:
+  datasource:
+    url: jdbc:postgresql://plan-service-db:5432/planService
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver

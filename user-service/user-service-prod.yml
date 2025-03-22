@@ -4,4 +4,11 @@ eureka:
       defaultZone: http://discovery-server:8888/eureka/
     register-with-eureka: true
     fetch-registry: true
- 
+
+spring:
+  datasource:
+    url: "jdbc:postgresql://user-service-db:5432/user-service"
+    username: postgres
+    password: test
+  kafka:
+    bootstrap-servers: localhost:9092  
