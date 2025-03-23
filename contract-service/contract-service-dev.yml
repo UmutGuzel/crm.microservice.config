@@ -9,3 +9,4 @@ spring:
   url: "jdbc:postgresql://contract-service-db:5432/contract_service"
   username: postgres
   password: test
+  driver-class-name: org.postgresql.Driver

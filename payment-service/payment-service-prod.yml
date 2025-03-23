@@ -9,3 +9,4 @@ spring:
     url: "jdbc:postgresql://payment-service-db:5432/payment-db"
     username: postgres
     password: test
+    driver-class-name: org.postgresql.Driver

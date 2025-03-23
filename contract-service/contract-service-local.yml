@@ -3,6 +3,7 @@ spring:
   url: "jdbc:postgresql://localhost:5432/contract_service"
   username: postgres
   password: test
+  driver-class-name: org.postgresql.Driver
 
 eureka:
   client:
