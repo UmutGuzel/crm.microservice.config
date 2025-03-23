@@ -1,12 +1,13 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://discovery-server:8888/eureka/
-    register-with-eureka: true
-    fetch-registry: true
 spring:
   datasource:
     url: "jdbc:postgresql://payment-service-db:5432/payment-db"
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8888/eureka/
+    register-with-eureka: true
+    fetch-registry: true
