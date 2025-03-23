@@ -7,7 +7,7 @@ eureka:
 
 spring:
   datasource:
-    url: "jdbc:postgresql://user-service-db:5434/user-service"
+    url: "jdbc:postgresql://user-service-db:5432/user-service"
     username: postgres
     password: test
   kafka:
