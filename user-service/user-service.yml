@@ -2,12 +2,12 @@ spring:
     application:
         name: user-service
     jpa:
+        hibernate:
+            ddl-auto: update
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
-        showSql: true
-        hibernate:
-            ddlAuto: update
+        show-sql: true
     
     kafka:
         consumer:
