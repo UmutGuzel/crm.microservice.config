@@ -1,7 +1,7 @@
 spring:
   application:
-   name: gateway-server
-   cloud:
+    name: gateway-server
+  cloud:
     gateway:
       discovery:
         locator:
@@ -82,9 +82,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,gateway
+        include: "*"
   endpoint:
     health:
       show-details: always
-    gateway:
-      enabled: true
