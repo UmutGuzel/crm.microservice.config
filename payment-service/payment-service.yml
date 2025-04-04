@@ -20,6 +20,9 @@ springdoc:
 
 logging:
   level:
+    root: INFO
+    com.gygy.paymentservice: DEBUG
     org.springframework.cloud.stream: DEBUG
-    org.springframework.kafka: DEBUG # Spring Kafka bileşenleri için
-    org.apache.kafka.clients.producer: DEBUG # Kafka producer detayları için
+    org.springframework.kafka: DEBUG
+    org.springframework.messaging: DEBUG
+    org.springframework.transaction: DEBUG
