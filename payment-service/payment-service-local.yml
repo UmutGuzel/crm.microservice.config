@@ -4,6 +4,7 @@ spring:
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,6 +18,18 @@ spring:
   cloud:
     stream:
       defaultBinder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9092
+          autoCreateTopics: true
+          autoAddPartitions: true
+          configuration:
+            auto.create.topics.enable: true
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            json.trusted.packages: "*"
       function:
         definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction
       bindings:
@@ -35,17 +48,19 @@ spring:
         billOverdueFunction-out-0:
           destination: bill-overdue-topic
           content-type: application/json
-      kafka:
-        binder:
-          brokers: localhost:9092
-          autoCreateTopics: true
-          autoAddPartitions: true
-          configuration:
-            key.serializer: org.apache.kafka.common.serialization.StringSerializer
-            value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
-            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
-            value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-            json.trusted.packages: "*"
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: payment-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
 
 eureka:
   client:
