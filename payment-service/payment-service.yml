@@ -17,3 +17,9 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+    org.springframework.kafka: DEBUG # Spring Kafka bileşenleri için
+    org.apache.kafka.clients.producer: DEBUG # Kafka producer detayları için

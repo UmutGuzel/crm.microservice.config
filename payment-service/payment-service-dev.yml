@@ -5,6 +5,39 @@ spring:
     password: test
     driver-class-name: org.postgresql.Driver
 
+  cloud:
+    stream:
+      defaultBinder: kafka
+      function:
+        definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction
+      bindings:
+        paymentSuccessFunction-out-0:
+          destination: payment-success-topic
+          content-type: application/json
+        paymentFailedFunction-out-0:
+          destination: payment-failed-topic
+          content-type: application/json
+        billCreatedFunction-out-0:
+          destination: bill-created-topic
+          content-type: application/json
+        billPaidFunction-out-0:
+          destination: bill-paid-topic
+          content-type: application/json
+        billOverdueFunction-out-0:
+          destination: bill-overdue-topic
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: kafka:9092
+          autoCreateTopics: true
+          autoAddPartitions: true
+          configuration:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+            key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            json.trusted.packages: "*"
+
 eureka:
   client:
     serviceUrl:
