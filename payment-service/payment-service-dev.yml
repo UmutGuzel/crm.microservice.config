@@ -5,6 +5,32 @@ spring:
     password: test
     driver-class-name: org.postgresql.Driver
 
+  cloud:
+    function:
+      definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          brokers: kafka-1:9092
+          autoCreateTopics: true
+    bindings:
+      paymentSuccessFunction-out-0:
+        destination: payment-success-topic
+        content-type: application/json
+      paymentFailedFunction-out-0:
+        destination: payment-failed-topic
+        content-type: application/json
+      billCreatedFunction-out-0:
+        destination: bill-created-topic
+        content-type: application/json
+      billPaidFunction-out-0:
+        destination: bill-paid-topic
+        content-type: application/json
+      billOverdueFunction-out-0:
+        destination: bill-overdue-topic
+        content-type: application/json
+
 eureka:
   client:
     serviceUrl:

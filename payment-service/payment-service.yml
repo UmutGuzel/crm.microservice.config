@@ -17,3 +17,12 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.gygy.paymentservice: DEBUG
+    org.springframework.cloud.stream: DEBUG
+    org.springframework.kafka: DEBUG
+    org.springframework.messaging: DEBUG
+    org.springframework.transaction: DEBUG
