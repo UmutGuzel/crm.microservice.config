@@ -10,3 +10,10 @@ spring:
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+  cloud:
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          brokers: kafka-1:9092
+          autoCreateTopics: true
