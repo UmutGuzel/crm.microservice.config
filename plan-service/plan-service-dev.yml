@@ -7,6 +7,6 @@ eureka:
 spring:
   datasource:
     url: jdbc:postgresql://plan-service-db:5432/planService
-    username: myuser
-    password: mypassword
+    username: postgres
+    password: test
     driver-class-name: org.postgresql.Driver
