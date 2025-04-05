@@ -26,3 +26,4 @@ logging:
     org.springframework.kafka: DEBUG
     org.springframework.messaging: DEBUG
     org.springframework.transaction: DEBUG
+    org.springframework.security: DEBUG
