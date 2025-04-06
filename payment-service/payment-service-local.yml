@@ -12,7 +12,7 @@ spring:
       defaultBinder: kafka
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: localhost:29092
           autoCreateTopics: true
     bindings:
       paymentSuccessFunction-out-0:
