@@ -1,9 +1,20 @@
 spring:
+  application:
+    name: payment-service
+
   datasource:
     url: "jdbc:postgresql://localhost:5432/payment-db"
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
 
   cloud:
     function:
@@ -31,9 +42,37 @@ spring:
         destination: bill-overdue-topic
         content-type: application/json
 
+server:
+  port: 9050
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
 eureka:
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://localhost:8888/eureka/
     register-with-eureka: true
     fetch-registry: true
+
+logging:
+  level:
+    root: INFO
+    com.gygy.paymentservice: DEBUG
+    org.springframework.cloud.stream: DEBUG
+    org.springframework.kafka: DEBUG
+    org.springframework.messaging: DEBUG
+    org.springframework.transaction: DEBUG
+    org.springframework.security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

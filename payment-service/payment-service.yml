@@ -27,3 +27,12 @@ logging:
     org.springframework.messaging: DEBUG
     org.springframework.transaction: DEBUG
     org.springframework.security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
