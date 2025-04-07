@@ -1,7 +1,4 @@
 spring:
-  application:
-    name: payment-service
-
   datasource:
     url: "jdbc:postgresql://localhost:5432/payment-db"
     username: postgres
@@ -53,7 +50,7 @@ springdoc:
 
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8888/eureka/
     register-with-eureka: true
     fetch-registry: true
