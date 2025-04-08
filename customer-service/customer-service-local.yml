@@ -1,3 +1,11 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5437/customer-service"
+    username: postgres
+    password: test
+  kafka:
+    bootstrap-servers: localhost:29092
+
 eureka:
   client:
     serviceUrl:
