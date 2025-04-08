@@ -40,3 +40,9 @@ management:
     export:
       prometheus:
         enabled: true
+  tracing:
+    propagation:
+      type:
+        - b3
+    sampling:
+      probability: 1.0
