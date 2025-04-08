@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: "jdbc:postgresql://localhost:5437/user-service"
+    url: "jdbc:postgresql://localhost:5437/customer-service"
     username: postgres
     password: test
   kafka:
