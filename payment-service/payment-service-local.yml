@@ -15,7 +15,7 @@ spring:
 
   cloud:
     function:
-      definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction
+      definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction;contractCreatedConsumer
     stream:
       defaultBinder: kafka
       kafka:
@@ -37,6 +37,9 @@ spring:
         content-type: application/json
       billOverdueFunction-out-0:
         destination: bill-overdue-topic
+        content-type: application/json
+      contractCreatedConsumer-in-0:
+        destination: contract-created-topic
         content-type: application/json
 
 server:
