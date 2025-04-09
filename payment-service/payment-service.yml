@@ -27,3 +27,22 @@ logging:
     org.springframework.messaging: DEBUG
     org.springframework.transaction: DEBUG
     org.springframework.security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  tracing:
+    propagation:
+      type:
+        - b3
+    sampling:
+      probability: 1.0

@@ -5,9 +5,17 @@ spring:
     password: test
     driver-class-name: org.postgresql.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
   cloud:
     function:
-      definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction
+      definition: paymentSuccessFunction;paymentFailedFunction;billCreatedFunction;billPaidFunction;billOverdueFunction;contractCreatedConsumer
     stream:
       defaultBinder: kafka
       kafka:
@@ -30,6 +38,18 @@ spring:
       billOverdueFunction-out-0:
         destination: bill-overdue-topic
         content-type: application/json
+      contractCreatedConsumer-in-0:
+        destination: contract-created-topic
+        content-type: application/json
+
+server:
+  port: 9050
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
 
 eureka:
   client:
@@ -37,3 +57,22 @@ eureka:
       defaultZone: http://localhost:8888/eureka/
     register-with-eureka: true
     fetch-registry: true
+
+logging:
+  level:
+    root: INFO
+    com.gygy.paymentservice: DEBUG
+    org.springframework.cloud.stream: DEBUG
+    org.springframework.kafka: DEBUG
+    org.springframework.messaging: DEBUG
+    org.springframework.transaction: DEBUG
+    org.springframework.security: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

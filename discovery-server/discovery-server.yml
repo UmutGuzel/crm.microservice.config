@@ -9,3 +9,9 @@ management:
   endpoint:
     health:
       show-details: always
+  tracing:
+    propagation:
+      type:
+        - b3
+    sampling:
+      probability: 1.0
