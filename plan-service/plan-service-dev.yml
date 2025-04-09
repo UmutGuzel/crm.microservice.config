@@ -10,3 +10,5 @@ spring:
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+  kafka:
+    bootstrap-servers: kafka-1:9092
