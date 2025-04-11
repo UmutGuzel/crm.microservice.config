@@ -27,20 +27,20 @@ spring:
                         trusted:
                             packages: "*"
 management:
-    endpoints:
-        web:
-            exposure:
-                include: "*"
-    enpoint:
-        health:
-            show-details: always
-    metrics:
-        export:
-            prometheus:
-                enabled: true
-    tracing:
-        sampling:
-            probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  enpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
 
 
 server:
