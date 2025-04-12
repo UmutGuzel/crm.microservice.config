@@ -6,14 +6,9 @@ eureka:
     fetch-registry: true
 spring:
   datasource:
-    url: "jdbc:postgresql://contract-service-db:5432/contract_service"
+    url: "jdbc:postgresql://localhost:5436/contract_service"
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
-  cloud:
-    stream:
-      defaultBinder: kafka
-      kafka:
-        binder:
-          brokers: kafka-1:9092
-          autoCreateTopics: true
+  kafka:
+    bootstrap-servers: kafka:9092
