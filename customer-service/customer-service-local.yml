@@ -1,8 +1,13 @@
 spring:
   datasource:
-    url: "jdbc:postgresql://localhost:5437/customer-service"
-    username: postgres
-    password: test
+    write:
+      url: "jdbc:postgresql://localhost:5437/customer-service"
+      username: postgres
+      password: test
+    read:
+      url: "jdbc:postgresql://localhost:5438/customer-service"
+      username: postgres
+      password: test
   kafka:
     bootstrap-servers: localhost:29092
 
