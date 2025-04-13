@@ -1,6 +1,9 @@
 spring:
   kafka:
-    bootstrap-servers: kafka-1:9092
+    bootstrap-servers: kafka-1:29092
+  data:
+    mongodb:
+      uri: mongodb://root:root@notification-service-db:27017/notification-service?authSource=admin
 eureka:
   client:
     serviceUrl:
