@@ -35,7 +35,7 @@ spring:
         - id: payment-service
           uri: lb://payment-service
           predicates:
-            - Path=/api/payments/**
+            - Path=/api/payments/**,/api/v1/payments/**
         - id: notification-service
           uri: lb://notification-service
           predicates:
@@ -43,7 +43,7 @@ spring:
         - id: customer-support-service
           uri: lb://customer-support-service
           predicates:
-            - Path=/api/support/**
+            - Path=/api/support/**,/api/tickets/**
         - id: customer-service
           uri: lb://customer-service
           predicates:
@@ -71,7 +71,7 @@ spring:
         - id: analytics-service
           uri: lb://analytics-service
           predicates:
-            - Path=/api/analytics/**
+            - Path=/api/analytics/**,/api/v1/analytics/**
       httpclient:
         connect-timeout: 5000
         response-timeout: 10000
