@@ -7,7 +7,7 @@ eureka:
 
 spring:
   datasource:
-    url: "jdbc:postgresql://contract-service-db:5432/contract-service"
+    url: "jdbc:postgresql://contract-service-db:5432/contract_service"
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
