@@ -11,9 +11,14 @@ spring:
   kafka:
     bootstrap-servers: localhost:29092
 
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: http://localhost:8888/eureka/
+#     register-with-eureka: true
+#     fetch-registry: true
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8888/eureka/
-    register-with-eureka: true
-    fetch-registry: true
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
