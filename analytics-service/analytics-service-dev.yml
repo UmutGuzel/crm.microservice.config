@@ -11,3 +11,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:root@analytics-service-db:27017/analytics-service?authSource=admin
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8888/eureka/
+    register-with-eureka: true
+    fetch-registry: true
