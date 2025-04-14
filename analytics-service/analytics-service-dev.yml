@@ -5,14 +5,20 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
-        spring.json.trusted.packages: '*'
+        spring:
+          json:
+            trusted:
+              packages: "*"
     consumer:
       group-id: analytics-service-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: '*'
-    
+        spring:
+          json:
+            trusted:
+              packages: "*"
+
   data:
     mongodb:
       uri: mongodb://root:root@analytics-service-db:27017/analytics-service?authSource=admin
