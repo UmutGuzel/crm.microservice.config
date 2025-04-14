@@ -5,7 +5,7 @@ spring:
     password: test
   data:
     mongodb:
-      uri: "mongodb://mongo:test@localhost:27020/customer-service?=authSource=admin"
+      uri: "mongodb://mongo:test@localhost:27020/customer-service?authSource=admin"
       database: customer-service
 
   kafka:
