@@ -11,6 +11,10 @@ spring:
     username: postgres
     password: test
     driver-class-name: org.postgresql.Driver
+  data:
+    mongodb:
+      uri: "mongodb://mongo:test@customer-service-mongodb:27017/customer-service?authSource=admin"
+      database: customer-service
 
   kafka:
     bootstrap-servers: kafka-1:9092  

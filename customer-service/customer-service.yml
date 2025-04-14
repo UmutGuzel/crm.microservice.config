@@ -1,3 +1,6 @@
+server:
+  port: 9020
+
 spring:
   application:
     name: customer-service
@@ -9,14 +12,49 @@ spring:
             dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
-  # kafka:
-  #   producer:
-  #     key-serializer: org.apache.kafka.common.serialization.StringSerializer
-  #     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-  #     properties:
-  #       spring.json.add.type.headers: true
-  #       spring.json.type.mapping: createdIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent,createdIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedIndividualCustomerEvent,createdCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedCorporateCustomerEvent,updatedIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedIndividualCustomerEvent,updatedCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedCorporateCustomerEvent,createdCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedCorporateCustomerReadEvent
-  #       spring.json.type.trusted.packages: "*"
-        
-server:
-  port: 9020
+  kafka:
+     producer:
+       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+       properties:
+         spring.json.add.type.headers: true
+         spring.json.type.mapping: createdIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent,createdIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedIndividualCustomerEvent,createdCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedCorporateCustomerEvent,updatedIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedIndividualCustomerEvent,updatedCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedCorporateCustomerEvent,createdCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedCorporateCustomerReadEvent
+         spring.json.type.trusted.packages: "*"
+     consumer:
+      group-id: customer-read-group, notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.use.type.headers: true
+        spring.json.trusted.packages: '*'
+        spring.json.type.mapping: "notificationPreferencesChangedEvent:com.gygy.customerservice.infrastructure.messaging.event.NotificationPreferencesChangedEvent,createdIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent,createdCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedCorporateCustomerReadEvent,updatedIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.UpdatedIndividualCustomerReadEvent,updatedCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.UpdatedCorporateCustomerReadEvent"
+        spring.json.value.default.type: com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent
+
+logging:
+  level:
+    com.gygy.customerservice: DEBUG
+    com.gygy.customerservice.infrastructure.outbox: DEBUG
+
+management:
+  tracing:
+    propagation:
+      type:
+        - b3
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+encryption:
+  secret-key: "GygyTelecomCRM2024!@#$%^&*()"
+  salt-key: "4202MRCmoceleTygyG!@#$%^&*()"
