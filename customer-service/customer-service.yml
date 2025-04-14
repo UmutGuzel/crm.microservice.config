@@ -9,13 +9,14 @@ spring:
             dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
-  kafka:
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring.json.type.mapping: createdIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent,createdIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedIndividualCustomerEvent,createdCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedCorporateCustomerEvent,updatedIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedIndividualCustomerEvent,updatedCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedCorporateCustomerEvent,createdCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedCorporateCustomerReadEvent
-        spring.json.type.trusted.packages: "*"
+  # kafka:
+  #   producer:
+  #     key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  #     properties:
+  #       spring.json.add.type.headers: true
+  #       spring.json.type.mapping: createdIndividualCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedIndividualCustomerReadEvent,createdIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedIndividualCustomerEvent,createdCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.CreatedCorporateCustomerEvent,updatedIndividualCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedIndividualCustomerEvent,updatedCorporateCustomerEvent:com.gygy.customerservice.infrastructure.messaging.event.UpdatedCorporateCustomerEvent,createdCorporateCustomerReadEvent:com.gygy.customerservice.infrastructure.messaging.event.db.CreatedCorporateCustomerReadEvent
+  #       spring.json.type.trusted.packages: "*"
         
 server:
   port: 9020
